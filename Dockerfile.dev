@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm install
+
+# copy is not really needed because of docker volumes. But if we make an downloadable image of not using
+# docker-compose the copy is needed.
+COPY . .
+
+CMD ["npm", "run", "start"]
